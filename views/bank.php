@@ -1,50 +1,40 @@
-<?php
-    
-  
-    if(isset($_POST["add"]))
-    {
-        $sql="SELECT * FROM product WHERE id = :id FOR UPDATE";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':id', $_POST['productID']);
-        $stmt->execute();
-        $result = $stmt->fetch();
-    }
-
-
-    //取出資料庫的資料
-    $sql = "SELECT * FROM product WHERE id = 1";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetch();
-
-?>
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
-        
+
         <table border="2" align="center" bordercolor="#6666FF">
-            <form method="POST" action="../Home/change">
+            <form method="trade" action="../Home/transMoney">
             <tr>
                 <td align="right"></tdalign>帳戶名稱</td>
-                <td align="right"></tdalign>餘額</td>
             </tr>
             <tr>
-                <td align="right"><?=$result['name']?></td>
-                <td align="right"><?=$result['money']?></td>
+                <td>
+                    <input type="text" name="name" id="name" value="" placeholder="輸入帳戶" />
+                </td>
             </tr>
-            
-            
-                
-                <input type="number" name="change"/>
-                <input type="submit" value="存/提款"/>
-                
-               
+            <tr>
+                <td>
+                    <input type=radio value="saveMoney" name="trade" checked ><font color="#000000"> 存款</font>
+                    <input type=radio value="getMoney" name="trade" ><font color="#000000"> 取款</font>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"></tdalign>輸入金額</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type"number" name="money" id="money" value="" plasceholder="輸入金額" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="送出交易" >
+                </td>
+            </tr>
+
             </form>
         </table>
     </body>

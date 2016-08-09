@@ -2,11 +2,11 @@
 
 class Controller {
     public function model($model) {
-        require_once "../activity/models/$model.php";
+        require_once "../c3_bank/models/$model.php";
         return new $model ();
     }
     public function view($view, $data = Array()) {
-        require_once "../activity/views/$view.php";
+        require_once "../c3_bank/views/$view.php";
     }
 }
 
